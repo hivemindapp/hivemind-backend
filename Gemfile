@@ -17,6 +17,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'rubocop-rails'
 gem 'bcrypt', '~> 3.1.7'
 gem 'active_model_serializers'
+gem 'figaro'
 
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
@@ -39,6 +40,8 @@ group :development, :test do
   gem 'faker'
   gem 'database_cleaner'
   gem 'shoulda-matchers'
+  gem 'vcr'
+  gem 'webmock'
 end
 
 group :development do
