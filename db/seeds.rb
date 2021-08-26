@@ -5,3 +5,24 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+Comment.destroy_all
+Post.destroy_all
+User.destroy_all
+
+
+op = FactoryBot.create(:user)
+commenter1 = FactoryBot.create(:user)
+commenter2 = FactoryBot.create(:user)
+
+FactoryBot.create_list(:post, 3, user: op) do |post|
+  FactoryBot.create_list(:comment, 3, post: post, user: commenter1)
+end
+
+FactoryBot.create_list(:post, 2, user: op) do |post|
+  FactoryBot.create_list(:comment, 2, post: post, user: commenter2)
+end
+
+FactoryBot.create_list(:post, 5, user: op) do |post|
+  FactoryBot.create_list(:comment, 1, post: post, user: commenter1)
+  FactoryBot.create_list(:comment, 2, post: post, user: commenter2)
+end
