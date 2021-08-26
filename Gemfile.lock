@@ -47,6 +47,8 @@ GEM
       i18n (>= 0.7, < 2)
       minitest (~> 5.1)
       tzinfo (~> 1.1)
+    addressable (2.8.0)
+      public_suffix (>= 2.0.2, < 5.0)
     arel (9.0.0)
     ast (2.4.2)
     bcrypt (3.1.16)
@@ -57,6 +59,8 @@ GEM
     case_transform (0.2)
       activesupport
     concurrent-ruby (1.1.9)
+    crack (0.4.5)
+      rexml
     crass (1.0.6)
     database_cleaner (2.0.1)
       database_cleaner-active_record (~> 2.0.0)
@@ -75,8 +79,11 @@ GEM
     faker (2.19.0)
       i18n (>= 1.6, < 2)
     ffi (1.15.3)
+    figaro (1.2.0)
+      thor (>= 0.14.0, < 2)
     globalid (0.5.2)
       activesupport (>= 5.0)
+    hashdiff (1.0.1)
     i18n (1.8.10)
       concurrent-ruby (~> 1.0)
     jbuilder (2.11.2)
@@ -105,6 +112,7 @@ GEM
     parser (3.0.2.0)
       ast (~> 2.4.1)
     pg (1.2.3)
+    public_suffix (4.0.6)
     puma (3.12.6)
     racc (1.5.2)
     rack (2.2.3)
@@ -158,7 +166,7 @@ GEM
       rspec-mocks (~> 3.10)
       rspec-support (~> 3.10)
     rspec-support (3.10.2)
-    rubocop (1.19.1)
+    rubocop (1.20.0)
       parallel (~> 1.10)
       parser (>= 3.0.0.0)
       rainbow (>= 2.2.2, < 4.0)
@@ -167,7 +175,7 @@ GEM
       rubocop-ast (>= 1.9.1, < 2.0)
       ruby-progressbar (~> 1.7)
       unicode-display_width (>= 1.4.0, < 3.0)
-    rubocop-ast (1.10.0)
+    rubocop-ast (1.11.0)
       parser (>= 3.0.1.1)
     rubocop-rails (2.11.3)
       activesupport (>= 4.2.0)
@@ -195,6 +203,11 @@ GEM
     tzinfo (1.2.9)
       thread_safe (~> 0.1)
     unicode-display_width (2.0.0)
+    vcr (6.0.0)
+    webmock (3.14.0)
+      addressable (>= 2.8.0)
+      crack (>= 0.3.2)
+      hashdiff (>= 0.4.0, < 2.0.0)
     websocket-driver (0.7.5)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
@@ -210,6 +223,7 @@ DEPENDENCIES
   database_cleaner
   factory_bot_rails
   faker
+  figaro
   jbuilder (~> 2.5)
   listen (>= 3.0.5, < 3.2)
   pg (>= 0.18, < 2.0)
@@ -220,6 +234,8 @@ DEPENDENCIES
   shoulda-matchers
   simplecov
   tzinfo-data
+  vcr
+  webmock
 
 RUBY VERSION
    ruby 2.7.2p137
