@@ -1,0 +1,18 @@
+language: ruby
+rbenv:
+- 2.7.2
+addons:
+  postgresql: 9.6
+script:
+- bundle exec rails db:create RAILS_ENV=test
+- bundle exec rails db:migrate
+- bundle exec rspec
+deploy:
+  provider: heroku
+  api_key: $HEROKU_API_KEY
+  app: hivemind-backend
+  run: rails db:migrate
+  on:
+    branch: main
+notifications:
+  email: false
