@@ -16,7 +16,7 @@ RSpec.describe Types::QueryType, type: :request do
       post '/graphql', params: { query: query(user_id: user1.id) }
 
       json = JSON.parse(response.body, symbolize_names: true)
-      data = json[:data][:posts]
+      data = json[:data][:userPosts]
       
       expect(data).to be_an Array
       expect(data.length).to eq 7
@@ -37,7 +37,7 @@ RSpec.describe Types::QueryType, type: :request do
     def query(user_id:)
       <<~GQL
         query {
-          user_posts(user_id: #{user_id}) {
+          userPosts(userId: #{user_id}) {
             id
             title
             image

@@ -21,7 +21,7 @@ module Types
     end
 
     def user_posts(user_id:)
-      Post.find_by(user_id: user_id)
+      User.find(user_id).posts
     end
   end
 end
