@@ -28,11 +28,15 @@ RSpec.describe Types::QueryType, type: :request do
       expect(data[:title]).to eq(@posts1.title)
       expect(data[:description]).to eq(@posts1.description)
       expect(data[:image]).to eq(@posts1.image)
+      expect(data[:upvotes]).to eq(@posts1.upvotes)
+      expect(data[:downvotes]).to eq(@posts1.downvotes)
       expect(data[:user][:id].to_i).to eq(@user1.id)
       expect(data[:user][:username]).to eq(@user1.username)
       expect(data[:user][:avatar]).to eq(@user1.avatar)
       expect(data[:comments].count).to eq(3)
       expect(data[:comments][1][:content]).to eq(@comment2.content)
+      expect(data[:comments][1][:upvotes]).to eq(@comment2.upvotes)
+      expect(data[:comments][1][:downvotes]).to eq(@comment2.downvotes)
       expect(data[:comments][1][:user][:id].to_i).to eq(@user2.id)
       expect(data[:comments][1][:user][:username]).to eq(@user2.username)
       expect(data[:comments][1][:user][:avatar]).to eq(@user2.avatar)
@@ -46,6 +50,8 @@ RSpec.describe Types::QueryType, type: :request do
             title
             description
             image
+            upvotes
+            downvotes
             user {
               id
               username
@@ -54,6 +60,8 @@ RSpec.describe Types::QueryType, type: :request do
             comments {
               id
               content
+              upvotes
+              downvotes
               user {
                 id
                 username

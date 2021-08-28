@@ -21,7 +21,7 @@ RSpec.describe Types::QueryType, type: :request do
       expect(data).to be_an Array
       expect(data.length).to eq 10
 
-      expect(data.first[:id]).to eq "2"
+      expect(data.first[:id]).to eq posts1.first.id.to_s
       expect(data.first[:title]).to be_a String
       expect(data.first[:image]).to be_a String
       expect(data.first[:upvotes]).to be_a Integer
