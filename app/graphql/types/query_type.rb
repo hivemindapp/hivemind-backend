@@ -22,10 +22,18 @@ module Types
       argument :user_id, ID, required: true
     end
 
+<<<<<<< HEAD
+=======
+    field :post, Types::PostType, null: false do
+        argument :id, ID, required: true
+      end
+
+>>>>>>> d34b317 (Impliment create comment mutation)
     def post(id:)
       Post.find(id)
     end
 
+<<<<<<< HEAD
     def posts
       Post.all
     end
@@ -33,5 +41,14 @@ module Types
     def user_posts(user_id:)
       User.find(user_id).posts
     end 
+=======
+    field :post_comments, [Types::CommentType], null: false, description: 'Returns a list of specific posts comments' do
+      argument :post_id, ID, required: true
+    end
+
+    def post_comments(post_id:)
+      Post.find(post_id).comments
+    end
+>>>>>>> d34b317 (Impliment create comment mutation)
   end
 end
