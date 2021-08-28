@@ -13,8 +13,8 @@ module Types
           description: 'Returns a list of all posts'
 
     field :user_posts, [Types::PostType], null: false, description: 'Returns a list of specific user posts' do
-            argument :user_id, ID, required: true
-          end
+      argument :user_id, ID, required: true
+    end
 
     def posts
       Post.all
