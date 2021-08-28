@@ -37,7 +37,7 @@ RSpec.describe Types::QueryType, type: :request do
     def query(user_id:)
       <<~GQL
         query {
-          user_posts(id: #{user_id}) {
+          user_posts(user_id: #{user_id}) {
             id
             title
             image
