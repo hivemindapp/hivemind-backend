@@ -6,7 +6,7 @@ module Types
     field :image, String, null: true
     field :upvotes, Integer, null: true
     field :downvotes, Integer, null: true
-    field :user_id, Integer, null: true
+    field :user_id, Integer, null: false
     field :created_at, GraphQL::Types::ISO8601DateTime, null: false
     field :updated_at, GraphQL::Types::ISO8601DateTime, null: false
     field :user, Types::UserType, null: false

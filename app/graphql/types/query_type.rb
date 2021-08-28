@@ -10,7 +10,7 @@ module Types
     field :posts,
           [Types::PostType],
           null: false,
-          description: 'Returns a list of user posts'
+          description: 'Returns a list of all posts'
 
     def posts
       Post.all
