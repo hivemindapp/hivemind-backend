@@ -1,7 +1,11 @@
 require 'rails_helper'
 
-RSpec.describe "Posts", type: :request do
-  describe '.resolve' do
+RSpec.describe Types::QueryType, type: :request do
+  set_graphql_type
+
+  describe 'posts' do
+    types = GraphQL::Define::TypeDefiner.instance
+
     it 'lists all posts' do
       user1 = create(:user)
       user2 = create(:user)
@@ -26,8 +30,8 @@ RSpec.describe "Posts", type: :request do
       expect(data.first[:user]).to eq({ id: user1.id.to_s, username: user1.username, avatar: user1.avatar })
     end
 
-    it 'returns objects that are post type' do
-
+    it 'returns post type objects' do
+      expect(subject).to have_field(:posts).of_type('[Post!]!')
     end
 
     def query
