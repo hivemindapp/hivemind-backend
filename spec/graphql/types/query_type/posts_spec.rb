@@ -17,11 +17,11 @@ RSpec.describe Types::QueryType, type: :request do
 
       json = JSON.parse(response.body, symbolize_names: true)
       data = json[:data][:posts]
-      
+
       expect(data).to be_an Array
       expect(data.length).to eq 10
 
-      expect(data.first[:id]).to eq "1"
+      expect(data.first[:id]).to eq "2"
       expect(data.first[:title]).to be_a String
       expect(data.first[:image]).to be_a String
       expect(data.first[:upvotes]).to be_a Integer
