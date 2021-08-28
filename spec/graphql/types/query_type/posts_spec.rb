@@ -26,6 +26,10 @@ RSpec.describe "Posts", type: :request do
       expect(data.first[:user]).to eq({ id: user1.id.to_s, username: user1.username, avatar: user1.avatar })
     end
 
+    it 'returns objects that are post type' do
+
+    end
+
     def query
       <<~GQL
         query {
