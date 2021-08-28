@@ -5,40 +5,35 @@ RSpec.describe Types::QueryType, type: :request do
 
   describe 'comments' do
     types = GraphQL::Define::TypeDefiner.instance
+    before :each do
+      @user1 = create(:user)
+      @user2 = create(:user)
+      @user3 = create(:user)
+      @user4 = create(:user)
+
+      @posts1 = create(:post, user: @user1)
+
+      @comment1 = create(:comment, user: @user1, post: @posts1)
+      @comment1 = create(:comment, user: @user2, post: @posts1)
+      @comment1 = create(:comment, user: @user3, post: @posts1)
+    end
 
     it 'lists all comments for a post' do
-      user1 = create(:user)
-      user2 = create(:user)
-      user3 = create(:user)
-      user4 = create(:user)
-
-      posts1 = create(:post, user: user1)
-
-      comment1 = create(:comment, user: user1, post: posts1)
-      comment1 = create(:comment, user: user2, post: posts1)
-      comment1 = create(:comment, user: user3, post: posts1)
-
       post '/graphql', params: { query: post_query }
 
       json = JSON.parse(response.body, symbolize_names: true)
 
-      require 'pry'; binding.pry
+      expect(json[:data][:post][:comments].count).to eq(3)
+      expect(json[:data][:post][:comments][0][:content]).to be_a String
     end
 
     def post_query
       <<~GQL
         query {
-          posts {
+          post(id: "#{@posts1.id}") {
             id
-            title
-            image
-            upvotes
-            downvotes
-            createdAt
-            user {
-              id
-              username
-              avatar
+            comments {
+              content
             }
           }
         }
