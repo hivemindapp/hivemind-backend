@@ -31,7 +31,7 @@ RSpec.describe Types::QueryType, type: :request do
     end
 
     it 'returns post type objects' do
-      expect(subject).to have_field(:posts).of_type('[Post!]!')
+      expect(subject).to have_field(:userPosts).of_type('[Post!]!')
     end
 
     def query(user_id:)
