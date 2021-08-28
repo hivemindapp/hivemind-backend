@@ -25,16 +25,5 @@ module Types
     def post(id:)
       Post.find(id)
     end
-
-    field :comments,
-          [Types::CommentType],
-          null: false do
-            argument :post_id, Integer, required: true
-          end
-
-
-    def comments(post_id:)
-      Comment.joins(:post).where(post_id: post_id)
-    end
   end
 end
