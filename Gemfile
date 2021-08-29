@@ -19,7 +19,7 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'active_model_serializers'
 gem 'figaro'
 
-# user GraphQL 
+# user GraphQL
 gem 'graphql'
 
 # Use ActiveStorage variant
