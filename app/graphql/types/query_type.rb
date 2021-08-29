@@ -15,5 +15,15 @@ module Types
     def posts
       Post.all
     end
+
+    field :post,
+          Types::PostType,
+          null: false do
+            argument :id, ID, required: true
+          end
+
+    def post(id:)
+      Post.find(id)
+    end
   end
 end
