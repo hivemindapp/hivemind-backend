@@ -7,19 +7,18 @@ module Types
     # Add root-level fields here.
     # They will be entry points for queries on your schema.
 
-    field :post,
-          Types::PostType,
-          null: false do
-            argument :id, ID, required: true
-          end
+    field :post, Types::PostType, null: false, description: 'returns a posts details' do
+      argument :id, ID, required: true
+    end
 
-    field :posts,
-          [Types::PostType],
-          null: false,
-          description: 'Returns a list of all posts'
+    field :posts, [Types::PostType], null: false, description: 'Returns a list of all posts'
 
     field :user_posts, [Types::PostType], null: false, description: 'Returns a list of specific user posts' do
       argument :user_id, ID, required: true
+    end
+
+    field :user, Types::UserType, null: false, description: 'Returns a users details' do
+      argument :id, ID, required: true
     end
 
     def post(id:)
@@ -32,6 +31,10 @@ module Types
 
     def user_posts(user_id:)
       User.find(user_id).posts
-    end 
+    end
+
+    def user(id:)
+      User.find(id)
+    end
   end
 end
