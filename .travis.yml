@@ -9,9 +9,9 @@ script:
 deploy:
   provider: heroku
   api_key: $HEROKU_API_KEY
-  app: hivemind-backend
   run: rails db:{migrate}
-  on:
-    branch: main
+  app:
+    main: hivemind-staging-branch
+    production: hivemind-backend
 notifications:
   email: false
