@@ -11,7 +11,13 @@ RSpec.describe Mutations::Users::CreateUser, type: :request do
           region: "Midwest",
           biography: "My Bio",
           avatar: "https://images/1"
-        }) 
+        }) {
+          id
+          username
+          region 
+          biography
+          avatar
+        }
       }
     GQL
   }
@@ -24,7 +30,6 @@ RSpec.describe Mutations::Users::CreateUser, type: :request do
   it 'creates a new post for the given user' do
     expect do
       post '/graphql', params: { query: query }
-      require 'pry'; binding.pry
     end.to change{ User.all.count }.by(1)
   end
 
