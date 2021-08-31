@@ -1,4 +1,4 @@
-class Mutations::Users::CreateUser < Mutations::BaseMutation
+class Mutations::Users::CreateUser < ::Mutations::BaseMutation
   argument :username, required: true
   argument :region, required: true
   argument :biography, required: true
@@ -6,7 +6,7 @@ class Mutations::Users::CreateUser < Mutations::BaseMutation
 
   type Types::UserType
 
-  def resolver(username:, region:, biography:, avatar:)
+  def resolve(username:, region:, biography:, avatar:)
     User.create!(username: username, region: region, biography: biography, avatar: avatar)
   end
 end
