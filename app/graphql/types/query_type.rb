@@ -22,6 +22,10 @@ module Types
       argument :user_id, ID, required: true
     end
 
+    field :post_comments, [Types::CommentType], null: false, description: 'Returns a list of specific posts comments' do
+      argument :post_id, ID, required: true
+    end
+
     def post(id:)
       Post.find(id)
     end
@@ -32,6 +36,10 @@ module Types
 
     def user_posts(user_id:)
       User.find(user_id).posts
-    end 
+    end
+
+    def post_comments(post_id:)
+      Post.find(post_id).comments
+    end
   end
 end
