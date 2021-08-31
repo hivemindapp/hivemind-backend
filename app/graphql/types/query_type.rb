@@ -31,7 +31,7 @@ module Types
     end
 
     def posts
-      Post.all
+      Post.all.order('created_at desc')
     end
 
     def user_posts(user_id:)
