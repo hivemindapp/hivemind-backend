@@ -24,6 +24,7 @@ gem 'oj'
 
 # user GraphQL
 gem 'graphql'
+gem 'graphql-batch'
 
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
