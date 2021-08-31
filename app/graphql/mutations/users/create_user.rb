@@ -1,8 +1,8 @@
 class Mutations::Users::CreateUser < ::Mutations::BaseMutation
-  argument :username, required: true
-  argument :region, required: true
-  argument :biography, required: true
-  argument :avatar, required: true
+  argument :username, String, required: true
+  argument :region, String, required: true
+  argument :biography, String, required: true
+  argument :avatar, String, required: true
 
   type Types::UserType
 
