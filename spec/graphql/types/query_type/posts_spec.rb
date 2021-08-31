@@ -6,7 +6,7 @@ RSpec.describe Types::QueryType, type: :request do
   describe 'posts' do
     types = GraphQL::Define::TypeDefiner.instance
 
-    it 'lists all posts' do
+    it 'lists all posts ordered by created date (newest to oldest)' do
       user1 = create(:user)
       user2 = create(:user)
 
@@ -20,14 +20,14 @@ RSpec.describe Types::QueryType, type: :request do
 
       expect(data).to be_an Array
       expect(data.length).to eq 10
-
-      expect(data.first[:id]).to eq posts1.first.id.to_s
-      expect(data.first[:title]).to be_a String
-      expect(data.first[:image]).to be_a String
-      expect(data.first[:upvotes]).to be_a Integer
-      expect(data.first[:downvotes]).to be_a Integer
+      
+      expect(data.first[:id]).to eq posts2.last.id.to_s
+      expect(data.first[:title]).to eq posts2.last.title
+      expect(data.first[:image]).to eq posts2.last.image
+      expect(data.first[:upvotes]).to eq posts2.last.upvotes
+      expect(data.first[:downvotes]).to eq posts2.last.downvotes
       expect(data.first[:createdAt]).to be_a String
-      expect(data.first[:user]).to eq({ id: user1.id.to_s, username: user1.username, avatar: user1.avatar })
+      expect(data.first[:user]).to eq({ id: user2.id.to_s, username: user2.username, avatar: user2.avatar })
     end
 
     it 'returns post type objects' do
