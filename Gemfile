@@ -20,6 +20,7 @@ gem 'active_model_serializers'
 gem 'factory_bot_rails'
 gem 'faker'
 gem 'figaro'
+gem 'oj'
 
 # user GraphQL
 gem 'graphql'
