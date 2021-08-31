@@ -19,6 +19,10 @@ module Types
 
     field :user, Types::UserType, null: false, description: 'Returns a users details' do
       argument :id, ID, required: true
+    end 
+      
+    field :post_comments, [Types::CommentType], null: false, description: 'Returns a list of specific posts comments' do
+      argument :post_id, ID, required: true
     end
 
     def post(id:)
@@ -26,7 +30,7 @@ module Types
     end
 
     def posts
-      Post.all
+      Post.all.order('created_at desc')
     end
 
     def user_posts(user_id:)
@@ -35,6 +39,10 @@ module Types
 
     def user(id:)
       User.find(id)
+    end 
+      
+    def post_comments(post_id:)
+      Post.find(post_id).comments
     end
   end
 end

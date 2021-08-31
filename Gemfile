@@ -17,6 +17,8 @@ gem 'jbuilder', '~> 2.5'
 gem 'rubocop-rails'
 gem 'bcrypt', '~> 3.1.7'
 gem 'active_model_serializers'
+gem 'factory_bot_rails'
+gem 'faker'
 gem 'figaro'
 
 # user GraphQL
@@ -39,8 +41,6 @@ group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'rspec-rails'
   gem 'simplecov'
-  gem 'factory_bot_rails'
-  gem 'faker'
   gem 'database_cleaner'
   gem 'rspec-graphql_matchers'
   gem 'shoulda-matchers'
