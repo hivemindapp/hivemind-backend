@@ -9,7 +9,7 @@ RSpec.describe Mutations::Blobs::CreateDirectUpload, type: :request do
     it 'creates a new blob' do
       expect do
         post '/graphql', params: { query: query }
-      end.to change{ Blob.all.count }.by(1)
+      end.to change{ ActiveStorage::Blob.all.count }.by(1)
     end
 
     it 'returns a direct upload type object' do
@@ -18,21 +18,23 @@ RSpec.describe Mutations::Blobs::CreateDirectUpload, type: :request do
       json = JSON.parse(response.body, symbolize_names: true)
       data = json[:data][:createDirectUpload]
 
-      blob = Blob.all.last
+      blob = ActiveStorage::Blob.all.last
       
       expect(data).to be_a Hash
 
-      expect(data[:signed_blob_id]).to eq blob.signed_id
+      expect(data[:directUpload][:signedBlobId]).to eq blob.signed_id
     end
 
-    def query(user_id:)
+    def query
       <<~GQL
         mutation createDirectUpload {
-          createDirectUpload(input: {
-            filename: "dev.to"
-            description: "image/jpeg"
-            checksum: "Z3Yzc2Q5iA5eXIgeTJn"
-            byteSize: 2019
+          createDirectUpload(input: 
+            {attributes: {
+                filename: "dev.to"
+                contentType: "image/jpeg"
+                checksum: #{File.read('spec/fixtures/image.txt')}
+                byteSize: 2019
+              }
             }
           ){ 
             directUpload {

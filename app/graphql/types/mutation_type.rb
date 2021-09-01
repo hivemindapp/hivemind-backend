@@ -7,6 +7,6 @@ module Types
 >>>>>>> b7a9043 (Impliment create comment mutation)
     field :create_user, mutation: Mutations::Users::CreateUser
     field :create_comment, mutation: Mutations::Comments::CreateComment
-    field :create_direct_upload, mutation: CreateDirectUpload
+    field :create_direct_upload, mutation: Mutations::Blobs::CreateDirectUpload
   end
 end
