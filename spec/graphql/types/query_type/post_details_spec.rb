@@ -6,10 +6,10 @@ RSpec.describe Types::QueryType, type: :request do
   describe 'post details' do
     types = GraphQL::Define::TypeDefiner.instance
     before :each do
-      @user1 = create(:user)
-      @user2 = create(:user)
-      @user3 = create(:user)
-      @user4 = create(:user)
+      @user1 = create(:user, :with_avatar)
+      @user2 = create(:user, :with_avatar)
+      @user3 = create(:user, :with_avatar)
+      @user4 = create(:user, :with_avatar)
 
       @posts1 = create(:post, :with_images, user: @user1)
 
@@ -20,27 +20,30 @@ RSpec.describe Types::QueryType, type: :request do
 
     it 'lists all details for a post' do
       post '/graphql', params: { query: post_query }
-      require 'pry'; binding.pry
 
       json = JSON.parse(response.body, symbolize_names: true)
       data = json[:data][:post]
 
+      images = @posts1.images.map do |image|
+        rails_blob_url(image, only_path: true)
+      end
+
       expect(data[:id].to_i).to eq(@posts1.id)
       expect(data[:title]).to eq(@posts1.title)
       expect(data[:description]).to eq(@posts1.description)
-      expect(data[:image]).to eq(@posts1.image)
+      expect(data[:imageUrls]).to eq(images)
       expect(data[:upvotes]).to eq(@posts1.upvotes)
       expect(data[:downvotes]).to eq(@posts1.downvotes)
       expect(data[:user][:id].to_i).to eq(@user1.id)
       expect(data[:user][:username]).to eq(@user1.username)
-      expect(data[:user][:avatar]).to eq(@user1.avatar)
+      expect(data[:user][:avatar]).to be_a String
       expect(data[:comments].count).to eq(3)
       expect(data[:comments][1][:content]).to eq(@comment2.content)
       expect(data[:comments][1][:upvotes]).to eq(@comment2.upvotes)
       expect(data[:comments][1][:downvotes]).to eq(@comment2.downvotes)
       expect(data[:comments][1][:user][:id].to_i).to eq(@user2.id)
       expect(data[:comments][1][:user][:username]).to eq(@user2.username)
-      expect(data[:comments][1][:user][:avatar]).to eq(@user2.avatar)
+      expect(data[:comments][1][:user][:avatar]).to be_a String
     end
 
     def post_query
