@@ -1,11 +1,9 @@
 module Mutations
   module Blobs
     class CreateDirectUpload < ::Mutations::BaseMutation
-      # include ActiveStorage::SetCurrent
 
       argument :attributes, Types::DirectUploadAttributes, required: true
 
-      # type Types::DirectUploadType
       field :direct_upload, Types::DirectUploadType, null: false
 
       def resolve(attributes:)
