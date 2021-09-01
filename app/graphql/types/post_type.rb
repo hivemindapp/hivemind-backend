@@ -13,9 +13,8 @@ module Types
     field :comments, [Types::CommentType], null: true
 
     def image_urls
-      post.images.map do |image|
-        require 'pry'; binding.pry
-        Rails.application.routes.url_helpers.rails_blob_url(image)
+      object.images.map do |image|
+        Rails.application.routes.url_helpers.rails_blob_url(image, only_path: true)
       end
     end
   end
