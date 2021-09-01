@@ -11,7 +11,7 @@ RSpec.describe Types::QueryType, type: :request do
       @user3 = create(:user)
       @user4 = create(:user)
 
-      @posts1 = create(:post, user: @user1)
+      @posts1 = create(:post, :with_images, user: @user1)
 
       @comment1 = create(:comment, user: @user1, post: @posts1)
       @comment2 = create(:comment, user: @user2, post: @posts1)
@@ -20,6 +20,7 @@ RSpec.describe Types::QueryType, type: :request do
 
     it 'lists all details for a post' do
       post '/graphql', params: { query: post_query }
+      require 'pry'; binding.pry
 
       json = JSON.parse(response.body, symbolize_names: true)
       data = json[:data][:post]
@@ -49,7 +50,7 @@ RSpec.describe Types::QueryType, type: :request do
             id
             title
             description
-            image
+            imageUrls
             upvotes
             downvotes
             user {
