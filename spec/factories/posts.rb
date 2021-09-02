@@ -8,7 +8,7 @@ FactoryBot.define do
     user
 
     trait :with_one_image do
-      images { Rack::Test::UploadedFile.new(Rails.root.join('spec', 'support', 'assets', 'test-image1.jpg'), 'image/jpg') }
+      images { Rack::Test::UploadedFile.new(Rails.root.join('spec', 'support', 'assets', 'test-image5.jpg'), 'image/jpg') }
     end
 
     trait :with_images do

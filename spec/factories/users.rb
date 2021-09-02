@@ -6,7 +6,7 @@ FactoryBot.define do
     # avatar { Faker::LoremFlickr.image(size: "500x500", search_terms: ['bear']) }
     
     trait :with_avatar do
-      avatar { Rack::Test::UploadedFile.new(Rails.root.join('spec', 'support', 'assets', 'test-image2.jpg'), 'image/jpg') }
+      avatar { Rack::Test::UploadedFile.new(Rails.root.join('spec', 'support', 'assets', 'test-image4.jpg'), 'image/jpg') }
     end
   end
 end

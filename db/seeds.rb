@@ -13,7 +13,7 @@ User.destroy_all
 op1 = FactoryBot.create(:user, :with_avatar)
 op2 = FactoryBot.create(:user, :with_avatar)
 commenter1 = FactoryBot.create(:user, :with_avatar)
-commenter2 = FactoryBot.create(:user)
+commenter2 = FactoryBot.create(:user, :with_avatar)
 
 FactoryBot.create_list(:post, 3, :with_images, user: op1) do |post|
   FactoryBot.create_list(:comment, 3, post: post, user: commenter1)
