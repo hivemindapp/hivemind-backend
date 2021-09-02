@@ -13,7 +13,7 @@ module Mutations
         image_ids.each do |image|
           post.images.attach(image)
         end
-        
+
         post
       end
     end

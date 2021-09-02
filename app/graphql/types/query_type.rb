@@ -19,8 +19,8 @@ module Types
 
     field :user, Types::UserType, null: false, description: 'Returns a users details' do
       argument :id, ID, required: true
-    end 
-      
+    end
+
     field :post_comments, [Types::CommentType], null: false, description: 'Returns a list of specific posts comments' do
       argument :post_id, ID, required: true
     end
@@ -39,8 +39,8 @@ module Types
 
     def user(id:)
       User.find(id)
-    end 
-      
+    end
+
     def post_comments(post_id:)
       Post.find(post_id).comments
     end
