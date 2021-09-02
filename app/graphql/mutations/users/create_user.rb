@@ -1,12 +1,11 @@
 class Mutations::Users::CreateUser < ::Mutations::BaseMutation
   argument :username, String, required: true
-  argument :region, String, required: true
-  argument :biography, String, required: true
-  argument :avatar, String, required: true
+  argument :region, String, required: false
+  argument :biography, String, required: false
 
   type Types::UserType
 
-  def resolve(username:, region:, biography:, avatar:)
-    User.create!(username: username, region: region, biography: biography, avatar: avatar)
+  def resolve(username:, region: nil, biography: nil)
+    User.create!(username: username, region: region, biography: biography)
   end
 end

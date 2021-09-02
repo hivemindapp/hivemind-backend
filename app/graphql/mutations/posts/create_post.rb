@@ -4,12 +4,13 @@ module Mutations
       argument :title, String, required: true
       argument :description, String, required: true
       argument :user_id, Integer, required: true
-      argument :images, Array, required: false
+      argument :image_ids, [String], required: false
 
       type Types::PostType
-      def resolve(user_id:, :title, :description)
+      
+      def resolve(user_id:, title:, description:)
         post = User.find(user_id).posts.create!(title: title, description: description)
-        images.each do |image|
+        image_ids.each do |image|
           post.images.attach(image)
         end
       end
