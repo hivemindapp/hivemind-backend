@@ -5,10 +5,10 @@ RSpec.describe Mutations::Comments::CreateComment, type: :request do
 
   describe 'create comment' do
     it 'creates a new comment' do
-      user1 = create(:user)
-      user2 = create(:user)
+      user1 = create(:user, :with_avatar)
+      user2 = create(:user, :with_avatar)
 
-      posts1 = create_list(:post, 5, user: user1)
+      posts1 = create_list(:post, 5, :with_images, user: user1)
 
       expect(Comment.all.count).to eq(0)
 
@@ -25,7 +25,7 @@ RSpec.describe Mutations::Comments::CreateComment, type: :request do
       expect(data[:downvotes]).to eq(new_comment.downvotes)
       expect(data[:user][:id]).to eq(user1.id.to_s)
       expect(data[:user][:username]).to eq(user1.username)
-      expect(data[:user][:avatar]).to eq(user1.avatar)
+      expect(data[:user][:avatar]).to eq(rails_blob_url(user1.avatar, only_path: true))
       expect(new_comment.post_id).to eq(posts1[0].id)
     end
 

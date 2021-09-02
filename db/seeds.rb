@@ -10,16 +10,16 @@ Post.destroy_all
 User.destroy_all
 
 
-op1 = FactoryBot.create(:user)
-op2 = FactoryBot.create(:user)
-commenter1 = FactoryBot.create(:user)
-commenter2 = FactoryBot.create(:user)
+op1 = FactoryBot.create(:user, :with_avatar)
+op2 = FactoryBot.create(:user, :with_avatar)
+commenter1 = FactoryBot.create(:user, :with_avatar)
+commenter2 = FactoryBot.create(:user, :with_avatar)
 
-FactoryBot.create_list(:post, 3, user: op1) do |post|
+FactoryBot.create_list(:post, 3, :with_images, user: op1) do |post|
   FactoryBot.create_list(:comment, 3, post: post, user: commenter1)
 end
 
-FactoryBot.create_list(:post, 2, user: op1) do |post|
+FactoryBot.create_list(:post, 2, :with_one_image, user: op1) do |post|
   FactoryBot.create_list(:comment, 2, post: post, user: commenter2)
 end
 
@@ -28,15 +28,15 @@ FactoryBot.create_list(:post, 5, user: op1) do |post|
   FactoryBot.create_list(:comment, 2, post: post, user: commenter2)
 end
 
-FactoryBot.create_list(:post, 3, user: op1) do |post|
+FactoryBot.create_list(:post, 3, :with_images, user: op1) do |post|
   FactoryBot.create_list(:comment, 3, post: post, user: commenter1)
 end
 
-FactoryBot.create_list(:post, 2, user: op2) do |post|
+FactoryBot.create_list(:post, 2, :with_images, user: op2) do |post|
   FactoryBot.create_list(:comment, 2, post: post, user: commenter1)
   FactoryBot.create_list(:comment, 3, post: post, user: commenter2)
   FactoryBot.create_list(:comment, 3, post: post, user: commenter1)
   FactoryBot.create_list(:comment, 4, post: post, user: commenter2)
 end
 
-FactoryBot.create_list(:post, 5, user: op2)
+FactoryBot.create_list(:post, 5, :with_one_image, user: op2)
