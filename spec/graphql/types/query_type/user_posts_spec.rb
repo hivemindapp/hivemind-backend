@@ -25,7 +25,7 @@ RSpec.describe Types::QueryType, type: :request do
 
       user = { id: user1.id.to_s, username: user1.username, avatar: rails_blob_url(user1.avatar, only_path: true) }
 
-      expect(data.first[:id]).to eq user1.posts.first.id.to_s
+      expect(data.first[:id]).to eq user1.posts.last.id.to_s
       expect(data.first[:title]).to be_a String
       expect(data.first[:imageUrls]).to be_an Array
       expect(data.first[:upvotes]).to be_a Integer

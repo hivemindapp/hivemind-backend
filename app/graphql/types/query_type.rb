@@ -34,7 +34,7 @@ module Types
     end
 
     def user_posts(user_id:)
-      User.find(user_id).posts
+      User.find(user_id).posts.order('created_at desc')
     end
 
     def user(id:)

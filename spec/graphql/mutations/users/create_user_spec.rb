@@ -8,15 +8,9 @@ RSpec.describe Mutations::Users::CreateUser, type: :request do
       mutation createUser {
         createUser(input: {
           username: "testusername",
-          region: "Midwest",
-          biography: "My Bio",
-          avatar: "https://images/1"
         }) {
           id
           username
-          region 
-          biography
-          avatar
         }
       }
     GQL
@@ -40,9 +34,6 @@ RSpec.describe Mutations::Users::CreateUser, type: :request do
 
       user = User.first
       expect(user.username).to eq 'testusername'
-      expect(user.region).to eq 'Midwest'
-      expect(user.biography).to eq 'My Bio'
-      expect(user.avatar).to eq 'https://images/1'
     end
   end
 end
