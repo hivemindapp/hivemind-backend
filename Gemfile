@@ -20,6 +20,7 @@ gem 'active_model_serializers'
 gem 'factory_bot_rails'
 gem 'faker'
 gem 'figaro'
+gem "google-cloud-storage", "~> 1.8", require: false
 gem 'oj'
 
 # user GraphQL

@@ -6,6 +6,18 @@ local:
   service: Disk
   root: <%= Rails.root.join("storage") %>
 
+google:
+  service: GCS
+  project: HiveMindApp
+  credentials: <%= ENV['GOOGLE_APPLICATION_CREDENTIALS'].as_json %>
+  bucket: hivemind-staging-branch
+
+google_dev:
+  service: GCS
+  project: HiveMindApp
+  credentials: <%= Rails.root.join("config/secrets/hivemind-staging.json") %>
+  bucket: hivemind-staging-branch
+
 # Use rails credentials:edit to set the AWS secrets (as aws:access_key_id|secret_access_key)
 # amazon:
 #   service: S3

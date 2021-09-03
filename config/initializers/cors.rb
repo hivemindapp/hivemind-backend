@@ -10,7 +10,8 @@ Rails.application.config.middleware.insert_before 0, Rack::Cors do
     origins 'localhost:3000', 'hivemindapp.netlify.app'
 
     resource '*',
-      headers: :any,
-      methods: [:get, :post, :put, :patch, :delete, :options, :head]
+      headers: ["Origin", "Content-Type", "Content-MD5", "Content-Disposition"],
+      methods: [:get, :post, :put, :patch, :delete, :options, :head],
+      max_age: 3600
   end
 end
