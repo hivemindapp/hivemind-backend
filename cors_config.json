@@ -1,0 +1,8 @@
+[
+  {
+    "origin": ["http://localhost:3000'", "https://hivemind-staging-branch.herokuapp.com", "https://hivemindapp.netlify.app"],
+    "method": ["GET", "POST", "PATCH", "UPDATE", "OPTIONS"],
+    "responseHeader": ["Origin", "content-type", "Content-Type", "Content-MD5", "Content-Disposition"],
+    "maxAgeSeconds": 500
+  }
+]
