@@ -1,3 +1,5 @@
+require "google/cloud/storage"
+
 module Mutations
   module Blobs
     class CreateDirectUpload < ::Mutations::BaseMutation
@@ -6,15 +8,14 @@ module Mutations
       field :direct_upload, Types::DirectUploadType, null: false
 
       def resolve(attributes:)
-        blob = ActiveStorage::Blob.create_before_direct_upload!(attributes.to_h)
-
+        blob = ActiveStorage::Blob.create_after_upload!(io: StringIO.new((Base64.decode64(attributes[:checksum].split(",")[1]))), filename: attributes[:filename], content_type: attributes[:content_type])
+        
         {
           direct_upload: {
-            url: ActiveStorage::Current.set(host: 'http://localhost:3000') do
+            url: ActiveStorage::Current.set(host: 'http://hivemind-staging-branch.herokuapp.com') do
               blob.service_url_for_direct_upload
             end,
-            headers: blob.service_headers_for_direct_upload.to_json,
-            blob_id: blob.id,
+            headers: blob.service_headers_for_direct_upload.merge('Content-Type': blob[:content_type]).to_json,
             signed_blob_id: blob.signed_id
           }
         }
