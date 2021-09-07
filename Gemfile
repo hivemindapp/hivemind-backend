@@ -15,6 +15,7 @@ gem 'jbuilder', '~> 2.5'
 # gem 'redis', '~> 4.0'
 # Use ActiveModel has_secure_password
 gem 'rubocop-rails'
+gem 'apollo_upload_server', '2.0.1'
 gem 'bcrypt', '~> 3.1.7'
 gem 'active_model_serializers'
 gem 'factory_bot_rails'

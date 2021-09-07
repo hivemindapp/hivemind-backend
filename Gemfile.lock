@@ -49,6 +49,9 @@ GEM
       tzinfo (~> 1.1)
     addressable (2.8.0)
       public_suffix (>= 2.0.2, < 5.0)
+    apollo_upload_server (2.0.1)
+      graphql (>= 1.8)
+      rails (>= 4.2)
     arel (9.0.0)
     ast (2.4.2)
     bcrypt (3.1.16)
@@ -311,6 +314,7 @@ PLATFORMS
 
 DEPENDENCIES
   active_model_serializers
+  apollo_upload_server (= 2.0.1)
   bcrypt (~> 3.1.7)
   bootsnap (>= 1.1.0)
   byebug
