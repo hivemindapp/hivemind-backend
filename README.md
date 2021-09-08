@@ -83,8 +83,14 @@ To run the full test suite, simply run `bundle exec rspec`. Gems required for te
 
 ## Contributors
 
-* Molly Krumholz: [Github](https://github.com/mkrumholz) & [Linkedin](https://www.linkedin.com/in/mkrumholz/)
-* Kat White: [Github](https://github.com/k-atwhite) & [Linkedin](https://www.linkedin.com/in/ka-white/)
-* Claire Fields: [Github](https://github.com/clairefields15) & [Linkedin](https://www.linkedin.com/in/clairefields15/)
-* Joe Peterson: [Github](https://github.com/JoePeterson51) & [Linkedin](https://www.linkedin.com/in/joe-peterson-14718220b/)
+#### Backend Team
+
 * Richard DeSilvey: [Github](https://github.com/redferret) & [Linkedin](https://www.linkedin.com/in/richard-desilvey-33161696/)
+* Molly Krumholz: [Github](https://github.com/mkrumholz) & [Linkedin](https://www.linkedin.com/in/mkrumholz/)
+* Joe Peterson: [Github](https://github.com/JoePeterson51) & [Linkedin](https://www.linkedin.com/in/joe-peterson-14718220b/)
+
+
+#### Frontend Team
+
+* Claire Fields: [Github](https://github.com/clairefields15) & [Linkedin](https://www.linkedin.com/in/clairefields15/)
+* Kat White: [Github](https://github.com/k-atwhite) & [Linkedin](https://www.linkedin.com/in/ka-white/)
