@@ -5,7 +5,8 @@
 HiveMind is where beekeepers go to get advice, ask questions to the experts, and meet our community of "bee-lievers." The HiveMind backend is a GraphQL API built in Ruby and Ruby on Rails and leverages ActiveStorage for image uploading along with an integration to Google Cloud Storage. 
 
 
-[Check out the deployed app](https://hivemindapp.netlify.app/)
+[Check out the deployed app](https://hivemindapp.netlify.app/) 
+[![Build Status](https://app.travis-ci.com/hivemindapp/hivemind-backend.svg?branch=main)](https://app.travis-ci.com/hivemindapp/hivemind-backend)
 
 - OR -
 
