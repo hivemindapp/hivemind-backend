@@ -1,14 +1,15 @@
-![bee](https://user-images.githubusercontent.com/26797256/132417870-44ffe1a0-cd00-48f6-9648-ab002a75c922.png)
+<img width="200" alt="hivemind-bee-logo" src="https://user-images.githubusercontent.com/26797256/132417870-44ffe1a0-cd00-48f6-9648-ab002a75c922.png">
 
 # HiveMind Backend
 
-[Check out the deployed app](https://hivemindapp.netlify.app/)
-
-[Explore the frontend repo](https://github.com/hivemindapp/hivemind-frontend)
-
 HiveMind is where beekeepers go to get advice, ask questions to the experts, and meet our community of "bee-lievers." The HiveMind backend is a GraphQL API built in Ruby and Ruby on Rails and leverages ActiveStorage for image uploading along with an integration to Google Cloud Storage. 
 
-Visit [our Wiki](https://github.com/hivemindapp/hivemind-backend/wiki/Hivemind-Backend-Overview) for more information on endpoints available, along with sample requests and responses.
+
+[Check out the deployed app](https://hivemindapp.netlify.app/)
+
+- OR -
+
+[Explore the frontend repo](https://github.com/hivemindapp/hivemind-frontend)
 
 ## System Dependencies
 
@@ -56,6 +57,9 @@ To view the config currently on your bucket:
 
 ` $ gsutil cors get gs://your-bucket-name `
 
+## Endpoints
+
+Visit [our Wiki](https://github.com/hivemindapp/hivemind-backend/wiki/Hivemind-Backend-Overview) for more information on endpoints available, along with sample requests and responses.
 
 ## Database Schema
 
@@ -63,14 +67,18 @@ To view the config currently on your bucket:
 
 ## Testing
 
- * 'graphiql-rails'
- *   gem 'database_cleaner'
-  gem 'rspec-graphql_matchers'
-  gem 'shoulda-matchers'
-  gem 'vcr'
-  gem 'webmock'
-  gem 'factory_bot_rails'
-gem 'faker'
+Run tests on mutations and queries using the GraphIQL interface:
+
+1. Run your dev server: `rails s`
+2. Visit `http:localhost:3000/graphiql`
+
+To run the full test suite, simply run `bundle exec rspec`. Gems required for testing:
+
+ * 'database_cleaner' # DB cleaning between test runs
+ * 'factory_bot_rails' # Creating mock data "factories"
+ * 'faker' # Generating fake data for our mocks
+ * 'rspec-graphql_matchers' # Provides matchers for GraphQL query/mutation testing
+ * 'shoulda-matchers' # Allows for simpler and more elegant expect statements
 
 ## Contributors
 
